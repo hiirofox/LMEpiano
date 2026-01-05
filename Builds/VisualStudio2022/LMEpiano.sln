@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio Version 17
+
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LMEpiano - Standalone Plugin", "LMEpiano_StandalonePlugin.vcxproj", "{979BCCA5-17C0-9DE7-D312-6D8E3581B431}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17338685-8875-E89B-F1B6-7D756241AE1C} = {17338685-8875-E89B-F1B6-7D756241AE1C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LMEpiano - VST3", "LMEpiano_VST3.vcxproj", "{D3B0149F-421A-1369-A07E-12E339B1342B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{17338685-8875-E89B-F1B6-7D756241AE1C} = {17338685-8875-E89B-F1B6-7D756241AE1C}
+		{331997C2-C0A8-88BB-1E80-88A3B39730FD} = {331997C2-C0A8-88BB-1E80-88A3B39730FD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LMEpiano - Shared Code", "LMEpiano_SharedCode.vcxproj", "{17338685-8875-E89B-F1B6-7D756241AE1C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LMEpiano - VST3 Manifest Helper", "LMEpiano_VST3ManifestHelper.vcxproj", "{331997C2-C0A8-88BB-1E80-88A3B39730FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3B0149F-421A-1369-A07E-12E339B1342B}.Debug|x64.ActiveCfg = Debug|x64
+		{D3B0149F-421A-1369-A07E-12E339B1342B}.Debug|x64.Build.0 = Debug|x64
+		{D3B0149F-421A-1369-A07E-12E339B1342B}.Release|x64.ActiveCfg = Release|x64
+		{D3B0149F-421A-1369-A07E-12E339B1342B}.Release|x64.Build.0 = Release|x64
+		{979BCCA5-17C0-9DE7-D312-6D8E3581B431}.Debug|x64.ActiveCfg = Debug|x64
+		{979BCCA5-17C0-9DE7-D312-6D8E3581B431}.Debug|x64.Build.0 = Debug|x64
+		{979BCCA5-17C0-9DE7-D312-6D8E3581B431}.Release|x64.ActiveCfg = Release|x64
+		{979BCCA5-17C0-9DE7-D312-6D8E3581B431}.Release|x64.Build.0 = Release|x64
+		{17338685-8875-E89B-F1B6-7D756241AE1C}.Debug|x64.ActiveCfg = Debug|x64
+		{17338685-8875-E89B-F1B6-7D756241AE1C}.Debug|x64.Build.0 = Debug|x64
+		{17338685-8875-E89B-F1B6-7D756241AE1C}.Release|x64.ActiveCfg = Release|x64
+		{17338685-8875-E89B-F1B6-7D756241AE1C}.Release|x64.Build.0 = Release|x64
+		{331997C2-C0A8-88BB-1E80-88A3B39730FD}.Debug|x64.ActiveCfg = Debug|x64
+		{331997C2-C0A8-88BB-1E80-88A3B39730FD}.Debug|x64.Build.0 = Debug|x64
+		{331997C2-C0A8-88BB-1E80-88A3B39730FD}.Release|x64.ActiveCfg = Release|x64
+		{331997C2-C0A8-88BB-1E80-88A3B39730FD}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
