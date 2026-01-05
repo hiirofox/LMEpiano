@@ -15,11 +15,11 @@ public:
 	LMEpiano(float sampleRate = 48000.0f)
 	{
 	}
-	void SetStringParams(float freq, float disp, float damp_base, float damp_high, float peakin, float peakout)
+	void SetStringParams(float freq, float disp, float nlv, float damp_base, float damp_high, float peakin, float peakout)
 	{
-		str1.SetParams(freq, disp, damp_base, damp_high, peakin, peakout);
-		str2.SetParams(freq * 1.0025f, disp, damp_base, damp_high, peakin, peakout);
-		str3.SetParams(freq / 1.0025f, disp, damp_base, damp_high, peakin, peakout);
+		str1.SetParams(freq, disp, nlv, damp_base, damp_high, peakin, peakout);
+		str2.SetParams(freq * 1.0025f, disp, nlv, damp_base, damp_high, peakin, peakout);
+		str3.SetParams(freq / 1.0025f, disp, nlv, damp_base, damp_high, peakin, peakout);
 
 	}
 	void NoteOn(float velocity)

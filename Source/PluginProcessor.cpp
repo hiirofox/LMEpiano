@@ -32,6 +32,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout LModelAudioProcessor::create
 	juce::AudioProcessorValueTreeState::ParameterLayout layout;
 	layout.add(std::make_unique<juce::AudioParameterFloat>("pitch", "pitch", -48, 48, 0));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("disp", "disp", 0, 2, 0.5));
+	layout.add(std::make_unique<juce::AudioParameterFloat>("nlv", "nlv", 0, 1, 0));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("damp_base", "damp_base", 0, 10, 1));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("damp_high", "damp_high", 0, 10, 1));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("peakin", "peakin", 0.0, 1.0, 0.2));
@@ -177,12 +178,13 @@ void LModelAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::
 
 	float pitch = *Params.getRawParameterValue("pitch");
 	float disp = *Params.getRawParameterValue("disp");
+	float nlv = *Params.getRawParameterValue("nlv");
 	float damp_base = *Params.getRawParameterValue("damp_base");
 	float damp_high = *Params.getRawParameterValue("damp_high");
 	float peakin = *Params.getRawParameterValue("peakin");
 	float peakout = *Params.getRawParameterValue("peakout");
 
-	epiano.SetStringParams(freq * powf(2.0f, pitch / 12.0f) / 10.0, disp, damp_base, damp_high, peakin, peakout);
+	epiano.SetStringParams(freq * powf(2.0f, pitch / 12.0f) / 10.0, disp, nlv, damp_base, damp_high, peakin, peakout);
 	epiano.ProcessBlock(wavbufl, wavbufr, numSamples);
 }
 

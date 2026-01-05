@@ -32,6 +32,7 @@ private:
 	LModelAudioProcessor& audioProcessor;
 	LMKnob K_Pitch;
 	LMKnob K_Disp;
+	LMKnob K_NLV;
 	LMKnob K_DampBase;
 	LMKnob K_DampHigh;
 	LMKnob K_PeakIn;
