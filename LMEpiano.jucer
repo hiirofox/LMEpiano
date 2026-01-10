@@ -9,6 +9,9 @@
         <FILE id="VkAAbW" name="LMEpiano.h" compile="0" resource="0" file="Source/dsp/LMEpiano.h"/>
         <FILE id="XPqdVN" name="RigidStringFDTD.h" compile="0" resource="0"
               file="Source/dsp/RigidStringFDTD.h"/>
+        <FILE id="tRjrBv" name="RigidStringWaveguide.h" compile="0" resource="0"
+              file="Source/dsp/RigidStringWaveguide.h"/>
+        <FILE id="ibSiJ7" name="DelayLine.h" compile="0" resource="0" file="Source/dsp/DelayLine.h"/>
       </GROUP>
       <GROUP id="{D1EA0815-1E4B-08B8-E880-552D65039546}" name="ui">
         <FILE id="O0NQf4" name="LM_slider.cpp" compile="1" resource="0" file="Source/ui/LM_slider.cpp"/>

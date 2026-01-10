@@ -3549,6 +3549,12 @@
     <ClInclude Include="..\..\Source\dsp\RigidStringFDTD.h">
       <Filter>LMEpiano\Source\dsp</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\dsp\RigidStringWaveguide.h">
+      <Filter>LMEpiano\Source\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\dsp\DelayLine.h">
+      <Filter>LMEpiano\Source\dsp</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\ui\LM_slider.h">
       <Filter>LMEpiano\Source\ui</Filter>
     </ClInclude>

@@ -2835,6 +2835,8 @@
     <ClInclude Include="..\..\Source\dsp\Excitation.h"/>
     <ClInclude Include="..\..\Source\dsp\LMEpiano.h"/>
     <ClInclude Include="..\..\Source\dsp\RigidStringFDTD.h"/>
+    <ClInclude Include="..\..\Source\dsp\RigidStringWaveguide.h"/>
+    <ClInclude Include="..\..\Source\dsp\DelayLine.h"/>
     <ClInclude Include="..\..\Source\ui\LM_slider.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
