@@ -42,6 +42,13 @@ public:
 		float singleStageDelay = numerator / denominator;
 		return singleStageDelay * (float)stages;
 	}
+	void Reset()
+	{
+		for (int i = 0; i < MaxStages; ++i)
+		{
+			zs[i] = 0;
+		}
+	}
 };
 
 class Damper
@@ -50,13 +57,17 @@ private:
 	float z = 0;
 	float dampBase = 1.0, dampHigh = 1.0;
 public:
-	void SetDampBase(float dampBase) { this->dampBase = dampBase; }
+	void SetDampBase(float dampBase) { this->dampBase = 1.0 - dampBase; }
 	void SetDampHigh(float dampHigh) { this->dampHigh = dampHigh; }
 	inline float ProcessSample(float x)
 	{
 		float y = (x + z * dampHigh) / (1.0f + dampHigh) * dampBase;
 		z = x;
 		return y;
+	}
+	void Reset()
+	{
+		z = 0;
 	}
 };
 
@@ -75,12 +86,15 @@ public:
 	}
 	void SetParams(float freq, float disp, float nonlinearV, float damp_base, float damp_high, float peakin, float peakout)
 	{
-		freq *= sampleRate / 4;//0->12000Hz
 		float t = sampleRate / freq;
 		disperser.SetA(disp);
 		disperser.SetStages(5);
 		t -= disperser.GetGroupDelay(freq);
+		if (t < 2)t = 2;
 		delay.SetDelayTime(t);
+
+		damp_base = expf((damp_base - 1.0) * 8) - expf(-8);
+		damp_high = expf((damp_high - 1.0) * 8) - expf(-8);
 
 		damper.SetDampBase(damp_base);
 		damper.SetDampHigh(damp_high);
@@ -89,9 +103,16 @@ public:
 	inline float ProcessSample(float excitation)
 	{
 		float in = excitation + fb;
-		delay.WriteSample(excitation);
+		delay.WriteSample(in);
 		float out = damper.ProcessSample(disperser.ProcessSample(delay.ReadSample()));
 		fb = out;
 		return fb;
+	}
+	void Reset()
+	{
+		delay.Reset();
+		disperser.Reset();
+		damper.Reset();
+		fb = 0;
 	}
 };

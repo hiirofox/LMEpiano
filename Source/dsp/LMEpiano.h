@@ -1,14 +1,15 @@
 #pragma once
 
 #include "RigidStringFDTD.h"
+#include "RigidStringWaveguide.h"
 #include "Excitation.h"
 
 class LMEpiano
 {
 private:
-	RigidStringFDTD str1{ 48000 };
-	RigidStringFDTD str2{ 48000 };
-	RigidStringFDTD str3{ 48000 };
+	RigidStringWaveguide str1{ 48000 };
+	RigidStringWaveguide str2{ 48000 };
+	RigidStringWaveguide str3{ 48000 };
 	float v1 = 0, v2 = 0, v3 = 0;
 	ExcitationPiano exciter;
 public:
@@ -36,18 +37,6 @@ public:
 		v1 = str1.ProcessSample(excitation);
 		v2 = str2.ProcessSample(excitation);
 		v3 = str3.ProcessSample(excitation);
-
-		float l1 = str1.GetLeftBoundary();
-		float l2 = str2.GetLeftBoundary();
-		float l3 = str3.GetLeftBoundary();
-		float r1 = str1.GetRightBoundary();
-		float r2 = str2.GetRightBoundary();
-		float r3 = str3.GetRightBoundary();
-		float l = (l1 + l2 + l3) * 0.1;
-		float r = 0;
-		str1.SetBoundary(l, r);
-		str2.SetBoundary(l, r);
-		str3.SetBoundary(l, r);
 
 		return 0;
 	}

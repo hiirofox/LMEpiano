@@ -53,7 +53,7 @@ private:
 		return dat[i1] * (1.0f - f) + dat[i2] * f;
 	}
 public:
-	constexpr static int GradientSamples = 5000;
+	constexpr static int GradientSamples = 500;
 
 	DelayLine()
 	{
@@ -87,5 +87,10 @@ public:
 		out = ReadSampleHermite(currentDelay);
 
 		if (++pos >= MaxDelayLen) pos = 0;
+	}
+	void Reset()
+	{
+		std::fill(dat, dat + MaxDelayLen, 0.0f);
+		out = 0;
 	}
 };
