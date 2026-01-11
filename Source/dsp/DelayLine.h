@@ -53,7 +53,7 @@ private:
 		return dat[i1] * (1.0f - f) + dat[i2] * f;
 	}
 public:
-	constexpr static int GradientSamples = 500;
+	constexpr static int GradientSamples = 50;
 
 	DelayLine()
 	{
@@ -63,7 +63,7 @@ public:
 	inline void SetDelayTime(float t)
 	{
 		targetDelay = t;
-		delayVelocity = (targetDelay - currentDelay) / (float)GradientSamples;
+		delayVelocity = 1.0 / (float)GradientSamples;
 	}
 
 	inline float ReadSample()
@@ -75,14 +75,7 @@ public:
 	{
 		dat[pos] = val;
 
-		if (fabsf(targetDelay - currentDelay) > 0.0001f)
-		{
-			currentDelay += delayVelocity;
-		}
-		else
-		{
-			currentDelay = targetDelay;
-		}
+		currentDelay += delayVelocity * (targetDelay - currentDelay);
 
 		out = ReadSampleHermite(currentDelay);
 

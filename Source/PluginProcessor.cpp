@@ -31,7 +31,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout LModelAudioProcessor::create
 {
 	juce::AudioProcessorValueTreeState::ParameterLayout layout;
 	layout.add(std::make_unique<juce::AudioParameterFloat>("pitch", "pitch", -48, 48, 0));
-	layout.add(std::make_unique<juce::AudioParameterFloat>("disp", "disp", -1, 1, 0.5));
+	layout.add(std::make_unique<juce::AudioParameterFloat>("disp", "disp", 0, 1, 0));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("nlv", "nlv", 0, 1, 0));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("damp_base", "damp_base", 0, 1, 1));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("damp_high", "damp_high", 0, 1, 1));
