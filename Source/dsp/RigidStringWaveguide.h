@@ -98,18 +98,21 @@ private:
 	float sampleRate = 48000;
 	DelayLine<48000> delay;
 	Disperser disperser;
+	Disperser nlapf;
 	Damper damper;
 	float fb = 0;
+	float overdrive = 0.0;
 public:
 	RigidStringWaveguide(float sampleRate = 48000.0)
 		: sampleRate(sampleRate)
 	{
 	}
-	void SetParams(float freq, float disp, float nonlinearV, float damp_base, float damp_high, float peakin, float peakout)
+	void SetParams(float freq, float disp, float overdrive, float damp_base, float damp_high)
 	{
 		disp = 1.0 - expf(-disp * 5.0f);
 		disperser.SetA(disp);
-		disperser.SetStages(25);
+		disperser.SetStages(2);
+		nlapf.SetStages(2);
 
 		damp_base = expf((damp_base - 1.0f) * 8.0f) - expf(-8.0f);
 		damp_high = expf((damp_high - 1.0f) * 8.0f) - expf(-8.0f);
@@ -119,17 +122,22 @@ public:
 		float totalPeriod = sampleRate / freq;
 		float dispDelay = disperser.GetPhaseDelay(freq);
 		float dampDelay = damper.GetPhaseDelay(freq);
-		float t = totalPeriod - dispDelay - dampDelay;
+		float nlapfDelay = nlapf.GetPhaseDelay(freq);
+		float t = totalPeriod - dispDelay - dampDelay - nlapfDelay;
 		if (t < 2.0f) t = 2.0f;
 		delay.SetDelayTime(t);
+
+		this->overdrive = overdrive;
 	}
 	inline float ProcessSample(float excitation)
 	{
 		float in = excitation + fb;
 		delay.WriteSample(in);
 		float out = damper.ProcessSample(disperser.ProcessSample(delay.ReadSample()));
-		fb = out;
-		return fb;
+		nlapf.SetA(atanf(out * out * out * 8.0) / M_PI * 2.0 * overdrive);//幅度强时，把能量挤到高次谐波
+		out = nlapf.ProcessSample(out);//时变调制全通，实现幅度挤压琴弦过载模拟
+		//fb = out;决定自己反不反馈
+		return atanf(out / 5.0) * 5.0;//软削波
 	}
 	void Reset()
 	{

@@ -33,10 +33,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout LModelAudioProcessor::create
 	layout.add(std::make_unique<juce::AudioParameterFloat>("pitch", "pitch", -48, 48, 0));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("disp", "disp", 0, 1, 0));
 	layout.add(std::make_unique<juce::AudioParameterFloat>("nlv", "nlv", 0, 1, 0));
-	layout.add(std::make_unique<juce::AudioParameterFloat>("damp_base", "damp_base", 0, 1, 1));
-	layout.add(std::make_unique<juce::AudioParameterFloat>("damp_high", "damp_high", 0, 1, 1));
-	layout.add(std::make_unique<juce::AudioParameterFloat>("peakin", "peakin", 0.0, 1.0, 0.2));
-	layout.add(std::make_unique<juce::AudioParameterFloat>("peakout", "peakout", 0.0, 1.0, 0.8));
+	layout.add(std::make_unique<juce::AudioParameterFloat>("cross", "cross", 0, 1, 0.35));
+	layout.add(std::make_unique<juce::AudioParameterFloat>("unison", "unison", 0, 1, 0.5));
+	layout.add(std::make_unique<juce::AudioParameterFloat>("damp_base", "damp_base", 0, 1, 0.25));
+	layout.add(std::make_unique<juce::AudioParameterFloat>("damp_high", "damp_high", 0, 1, 0.25));
 	return layout;
 }
 
@@ -156,14 +156,13 @@ void LModelAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::
 		if (MidiMsg.isNoteOn())
 		{
 			int note = MidiMsg.getNoteNumber() - 24;
-			freq = 440.0 * powf(2.0f, (float)(note - 69) / 12.0f);
-			epiano.NoteOn(MidiMsg.getFloatVelocity());
+			epianos.NoteOn(note, MidiMsg.getFloatVelocity());
 			//throw "test";
 		}
 		if (MidiMsg.isNoteOff())
 		{
 			int note = MidiMsg.getNoteNumber() - 24;
-			epiano.NoteOff();
+			epianos.NoteOff(note);
 		}
 	}
 	midiMessages.clear();
@@ -179,13 +178,13 @@ void LModelAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::
 	float pitch = *Params.getRawParameterValue("pitch");
 	float disp = *Params.getRawParameterValue("disp");
 	float nlv = *Params.getRawParameterValue("nlv");
+	float cross = *Params.getRawParameterValue("cross");
+	float unison = *Params.getRawParameterValue("unison");
 	float damp_base = *Params.getRawParameterValue("damp_base");
 	float damp_high = *Params.getRawParameterValue("damp_high");
-	float peakin = *Params.getRawParameterValue("peakin");
-	float peakout = *Params.getRawParameterValue("peakout");
 
-	epiano.SetStringParams(freq * powf(2.0f, pitch / 12.0f), disp, nlv, damp_base, damp_high, peakin, peakout);
-	epiano.ProcessBlock(wavbufl, wavbufr, numSamples);
+	epianos.SetStringParams(powf(2.0f, (pitch + 24.0) / 12.0f), disp, nlv, cross, unison, damp_base, damp_high);
+	epianos.ProcessBlock(wavbufl, wavbufr, numSamples);
 }
 
 //==============================================================================

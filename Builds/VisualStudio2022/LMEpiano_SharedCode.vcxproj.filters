@@ -8,6 +8,9 @@
     <Filter Include="LMEpiano\Source\ui">
       <UniqueIdentifier>{4D614DD4-4261-8733-7D46-F7D86934AED6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LMEpiano\Source\waves">
+      <UniqueIdentifier>{637FDD77-CE84-3004-A791-644F10A005A5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="LMEpiano\Source">
       <UniqueIdentifier>{6646CEFE-5357-788D-1A83-237A066B5570}</UniqueIdentifier>
     </Filter>
@@ -676,6 +679,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\dsp\Excitation.cpp">
+      <Filter>LMEpiano\Source\dsp</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ui\LM_slider.cpp">
       <Filter>LMEpiano\Source\ui</Filter>
     </ClCompile>
@@ -3486,6 +3492,9 @@
     </ClCompile>
     <ClCompile Include="C:\JUCE\modules\juce_gui_extra\juce_gui_extra.mm">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>JUCE Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp">
       <Filter>JUCE Library Code</Filter>
@@ -7458,6 +7467,9 @@
     <ClInclude Include="C:\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>JUCE Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
@@ -7466,6 +7478,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Source\waves\Piano_IR.wav">
+      <Filter>LMEpiano\Source\waves</Filter>
+    </None>
     <None Include="C:\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\common</Filter>
     </None>

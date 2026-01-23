@@ -33,10 +33,10 @@ private:
 	LMKnob K_Pitch;
 	LMKnob K_Disp;
 	LMKnob K_NLV;
+	LMKnob K_Cross;
+	LMKnob K_Unison;
 	LMKnob K_DampBase;
 	LMKnob K_DampHigh;
-	LMKnob K_PeakIn;
-	LMKnob K_PeakOut;
 
 
 	juce::ComponentBoundsConstrainer constrainer;  // 用于设置宽高比例

@@ -5,6 +5,7 @@
   <MAINGROUP id="lX5LoC" name="LMEpiano">
     <GROUP id="{BCF900B0-6242-9B6C-24DD-1F575D904DF8}" name="Source">
       <GROUP id="{E76B7822-D890-4CCA-B825-4098506E5EEE}" name="dsp">
+        <FILE id="vSI3JU" name="Excitation.cpp" compile="1" resource="0" file="Source/dsp/Excitation.cpp"/>
         <FILE id="FYM9Bv" name="Excitation.h" compile="0" resource="0" file="Source/dsp/Excitation.h"/>
         <FILE id="VkAAbW" name="LMEpiano.h" compile="0" resource="0" file="Source/dsp/LMEpiano.h"/>
         <FILE id="XPqdVN" name="RigidStringFDTD.h" compile="0" resource="0"
@@ -16,6 +17,9 @@
       <GROUP id="{D1EA0815-1E4B-08B8-E880-552D65039546}" name="ui">
         <FILE id="O0NQf4" name="LM_slider.cpp" compile="1" resource="0" file="Source/ui/LM_slider.cpp"/>
         <FILE id="ciYlAm" name="LM_slider.h" compile="0" resource="0" file="Source/ui/LM_slider.h"/>
+      </GROUP>
+      <GROUP id="{C49C3A93-2503-FE07-315F-DB8908905E9B}" name="waves">
+        <FILE id="Z89xaQ" name="Piano_IR.wav" compile="0" resource="1" file="Source/waves/Piano_IR.wav"/>
       </GROUP>
       <FILE id="XbvN8j" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>

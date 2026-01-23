@@ -32,21 +32,21 @@ LModelAudioProcessorEditor::LModelAudioProcessorEditor(LModelAudioProcessor& p)
 	K_Disp.setText("disp", "");
 	K_Disp.ParamLink(audioProcessor.GetParams(), "disp");
 	addAndMakeVisible(K_Disp);
-	K_NLV.setText("nlv", "");
+	K_NLV.setText("overdrive", "");
 	K_NLV.ParamLink(audioProcessor.GetParams(), "nlv");
 	addAndMakeVisible(K_NLV);
-	K_DampBase.setText("damp_base", "");
+	K_Cross.setText("cross", "");
+	K_Cross.ParamLink(audioProcessor.GetParams(), "cross");
+	addAndMakeVisible(K_Cross);
+	K_Unison.setText("unison", "");
+	K_Unison.ParamLink(audioProcessor.GetParams(), "unison");
+	addAndMakeVisible(K_Unison);
+	K_DampBase.setText("sus", "");
 	K_DampBase.ParamLink(audioProcessor.GetParams(), "damp_base");
 	addAndMakeVisible(K_DampBase);
-	K_DampHigh.setText("damp_high", "");
+	K_DampHigh.setText("damp", "");
 	K_DampHigh.ParamLink(audioProcessor.GetParams(), "damp_high");
 	addAndMakeVisible(K_DampHigh);
-	K_PeakIn.setText("peakin", "");
-	K_PeakIn.ParamLink(audioProcessor.GetParams(), "peakin");
-	addAndMakeVisible(K_PeakIn);
-	K_PeakOut.setText("peakout", "");
-	K_PeakOut.ParamLink(audioProcessor.GetParams(), "peakout");
-	addAndMakeVisible(K_PeakOut);
 
 
 	startTimerHz(30);
@@ -80,10 +80,10 @@ void LModelAudioProcessorEditor::resized()
 	K_Pitch.setBounds(32 + 64 * 0, 32, 64, 64);
 	K_Disp.setBounds(32 + 64 * 1, 32, 64, 64);
 	K_NLV.setBounds(32 + 64 * 2, 32, 64, 64);
-	K_DampBase.setBounds(32 + 64 * 3, 32, 64, 64);
-	K_DampHigh.setBounds(32 + 64 * 4, 32, 64, 64);
-	K_PeakIn.setBounds(32 + 64 * 5, 32, 64, 64);
-	K_PeakOut.setBounds(32 + 64 * 6, 32, 64, 64);
+	K_Cross.setBounds(32 + 64 * 3, 32, 64, 64);
+	K_Unison.setBounds(32 + 64 * 4, 32, 64, 64);
+	K_DampBase.setBounds(32 + 64 * 5, 32, 64, 64);
+	K_DampHigh.setBounds(32 + 64 * 6, 32, 64, 64);
 
 }
 
